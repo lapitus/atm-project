@@ -11,8 +11,10 @@ public class GetBalanceTestDrive {
 
         String firstName = "Ivan";
         String lastName = "Ivanov";
+
         int cardNo = 12345;
         int pin = 12;
+
         Balance clientBalance;
         Date expireDate = new Date();
         Atm atm = new Atm();
