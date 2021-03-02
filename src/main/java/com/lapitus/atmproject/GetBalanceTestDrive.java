@@ -7,6 +7,7 @@ import com.lapitus.atmproject.finance.Balance;
 import java.util.Date;
 
 public class GetBalanceTestDrive {
+
     public static void main(String[] args) {
 
         String firstName = "Ivan";
