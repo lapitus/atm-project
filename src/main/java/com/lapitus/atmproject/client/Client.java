@@ -14,6 +14,7 @@ public class Client {
     @Getter @Setter private Date expireDate;
     @Getter @Setter Balance balance;
 
+
     public Client(String firstName, String lastName, int cardNo, int pin, Date expireDate) {
         this.firstName = firstName;
         this.lastName = lastName;
