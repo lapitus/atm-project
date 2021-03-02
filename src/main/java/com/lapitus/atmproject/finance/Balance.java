@@ -1,22 +1,9 @@
 package com.lapitus.atmproject.finance;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class Balance {
-    private float amount;
-    private int currency;
-
-    public float getAmount() {
-        return amount;
-    }
-
-    public void setAmount(float amount) {
-        this.amount = amount;
-    }
-
-    public int getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(int currency) {
-        this.currency = currency;
-    }
+    @Getter @Setter private float amount;
+    @Getter @Setter private int currency;
 }
