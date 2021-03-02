@@ -15,8 +15,7 @@ public class GetBalanceTestDrive {
         int cardNo = 12345;
         int pin = 12;
 
-        Balance clientBalance = new Balance();
-        System.out.println(clientBalance.getAmount());
+        Balance clientBalance;
         Date expireDate = new Date();
         Atm atm = new Atm();
 

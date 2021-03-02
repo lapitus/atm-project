@@ -9,7 +9,7 @@ public class Atm {
 
     public Balance getBalance(Client client) {
         balance = new Balance();
-        if (client.getCardNo() == 12345 && client.getPin() == 12) {
+        if (client.getCardNo() == 12345 && client.getCardPin() == 12) {
             balance.setAmount(800);
             balance.setCurrency(840);
         } else {
