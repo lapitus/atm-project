@@ -9,7 +9,6 @@ import java.util.Date;
 public class GetBalanceTestDrive {
 
     public static void main(String[] args) {
-
         String firstName = "Ivan";
         String lastName = "Ivanov";
 
