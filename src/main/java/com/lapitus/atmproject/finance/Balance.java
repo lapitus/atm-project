@@ -1,14 +1,19 @@
 package com.lapitus.atmproject.finance;
-
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter @Setter
 public class Balance {
-    @Getter @Setter private float amount;
-    @Getter @Setter private int currency;
+     private float amount;
+     private String currency;
 
     public Balance() {
         this.amount = 0;
-        this.currency = 0;
+        this.currency = "RUR";
+    }
+
+    public Balance(float amount, String currency) {
+        this.amount = amount;
+        this.currency = currency;
     }
 }

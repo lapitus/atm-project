@@ -3,23 +3,30 @@ package com.lapitus.atmproject.client;
 import com.lapitus.atmproject.finance.Balance;
 
 import java.util.Date;
+
+import com.lapitus.atmproject.fininterface.Finapi;
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter @Setter
 public class Client {
-    @Getter @Setter private String firstName;
-    @Getter @Setter private String lastName;
-    @Getter @Setter private int cardNo;
-    @Getter @Setter private int cardPin;
-    @Getter @Setter private Date cardExpireDate;
-    @Getter @Setter Balance balance;
+    private String firstName;
+    private String lastName;
+    private String cardNo;
+    private int cardPin;
+    private Date cardExpireDate;
+    private Balance balance;
 
 
-    public Client(String firstName, String lastName, int cardNo, int cardPin, Date expireDate) {
+    public Client(String firstName, String lastName, String cardNo, int cardPin, Date expireDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.cardNo = cardNo;
         this.cardPin = cardPin;
         this.cardExpireDate = expireDate;
+    }
+
+    public Balance getBalance(Finapi atm) {
+        return atm.getBalance(cardNo,cardExpireDate,cardPin);
     }
 }
