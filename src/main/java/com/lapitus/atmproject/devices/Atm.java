@@ -14,10 +14,9 @@ public class Atm implements FinApi {
 
     public Balance getBalance(String cardNo, Date cardExpireDate, int cardPin) {
 
-        //validate params
 
         Balance balance;
-
+        //validate params
         try {
             validateParams(cardNo, cardPin, cardExpireDate);
         } catch (BadCardNoException | BadPinException | CardExpiredException e) {
@@ -25,11 +24,11 @@ public class Atm implements FinApi {
             throw new RuntimeException();
         }
 
+        //sendRequest to host
         Host host = new Host("127.0.0.1");
         RequestBalance req = new RequestBalance(cardNo, cardPin);
         balance = sendMessageToHost(host, req);
-
-
+        
         return balance;
     }
 

@@ -13,8 +13,8 @@ import java.util.List;
 
 @Getter @Setter
 public class Host implements HostApi {
-    String hostAddress;
-    static List<RequestBalance> requestList = new ArrayList<>();
+    private String hostAddress;
+    private static List<RequestBalance> requestList = new ArrayList<>();
 
     public Host(String hostAddress) {
         this.hostAddress = hostAddress;

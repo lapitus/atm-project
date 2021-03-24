@@ -1,7 +1,7 @@
 package Exceptions;
 
 public class BadPinException extends Exception {
-    int pin;
+    private int pin;
 
     public BadPinException(int pin) {
         this.pin = pin;

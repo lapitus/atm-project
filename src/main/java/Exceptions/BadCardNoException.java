@@ -1,7 +1,7 @@
 package Exceptions;
 
 public class BadCardNoException extends Exception {
-    String cardNo;
+    private String cardNo;
 
     public BadCardNoException(String cardNo) {
         this.cardNo = cardNo;

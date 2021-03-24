@@ -6,8 +6,8 @@ import java.util.Objects;
 
 @Getter @Setter
 public class RequestBalance {
-    String cardNo;
-    int pin;
+    private String cardNo;
+    private int pin;
 
     public RequestBalance(String cardNo, int pin){
         this.cardNo = cardNo;

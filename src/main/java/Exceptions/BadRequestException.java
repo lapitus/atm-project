@@ -3,7 +3,7 @@ package Exceptions;
 import com.lapitus.atmproject.request.RequestBalance;
 
 public class BadRequestException extends Exception{
-    RequestBalance req;
+    private RequestBalance req;
 
     public BadRequestException(RequestBalance req) {
         this.req = req;
