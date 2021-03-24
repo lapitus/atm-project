@@ -4,7 +4,7 @@ import com.lapitus.atmproject.finance.Balance;
 
 import java.util.Date;
 
-import com.lapitus.atmproject.fininterface.Finapi;
+import com.lapitus.atmproject.interfaces.FinApi;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,7 +26,7 @@ public class Client {
         this.cardExpireDate = expireDate;
     }
 
-    public Balance getBalance(Finapi atm) {
+    public Balance getBalance(FinApi atm) {
         return atm.getBalance(cardNo,cardExpireDate,cardPin);
     }
 }

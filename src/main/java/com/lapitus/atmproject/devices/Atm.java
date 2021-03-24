@@ -2,35 +2,39 @@ package com.lapitus.atmproject.devices;
 
 import Exceptions.BadCardNoException;
 import Exceptions.BadPinException;
+import Exceptions.BadRequestException;
 import Exceptions.CardExpiredException;
 import com.lapitus.atmproject.finance.Balance;
-import com.lapitus.atmproject.fininterface.Finapi;
+import com.lapitus.atmproject.interfaces.FinApi;
+import com.lapitus.atmproject.request.RequestBalance;
 
 import java.util.Date;
 
-public class Atm implements Finapi {
+public class Atm implements FinApi {
 
     public Balance getBalance(String cardNo, Date cardExpireDate, int cardPin) {
 
         //validate params
 
-        Balance balance = new Balance(100,"USD");
+        Balance balance;
 
         try {
-            validateParams(cardNo,cardPin,cardExpireDate);
+            validateParams(cardNo, cardPin, cardExpireDate);
         } catch (BadCardNoException | BadPinException | CardExpiredException e) {
             e.printStackTrace();
             throw new RuntimeException();
         }
 
-        //sendMessageToHost
+        Host host = new Host("127.0.0.1");
+        RequestBalance req = new RequestBalance(cardNo, cardPin);
+        balance = sendMessageToHost(host, req);
 
 
         return balance;
     }
 
-    private void  validateParams (String cardNo, int cardPin,Date cardExpireDate) throws BadCardNoException,BadPinException, CardExpiredException {
-        Date currentDate =  new Date();
+    private void validateParams(String cardNo, int cardPin, Date cardExpireDate) throws BadCardNoException, BadPinException, CardExpiredException {
+        Date currentDate = new Date();
 
         if (!cardNo.matches("^[0-9]{16}$")) {
             throw new BadCardNoException(cardNo);
@@ -41,9 +45,17 @@ public class Atm implements Finapi {
         }
 
         if (cardExpireDate.before(currentDate)) {
-            throw new CardExpiredException(cardExpireDate,cardNo);
+            throw new CardExpiredException(cardExpireDate, cardNo);
         }
     }
 
+    private Balance sendMessageToHost(Host host, RequestBalance req) {
 
+        try {
+            return host.getBalanceRequest(req);
+        } catch (BadRequestException e) {
+            e.printStackTrace();
+            throw new RuntimeException();
+        }
+    }
 }

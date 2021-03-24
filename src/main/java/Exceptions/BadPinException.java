@@ -8,7 +8,7 @@ public class BadPinException extends Exception {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return ("Bad pin " + pin + ". Result:" + pin % 2 );
     }
 }
