@@ -4,8 +4,8 @@ import com.lapitus.atmproject.devices.Atm;
 import com.lapitus.atmproject.client.Client;
 import com.lapitus.atmproject.finance.Balance;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
+
 
 public class Main {
 
@@ -18,7 +18,8 @@ public class Main {
         int pin = 1234;
 
         Balance clientBalance;
-        Date expireDate = new Date(121, Calendar.MARCH, 29);
+        LocalDate expireDate = LocalDate.of(2021,3,29);
+
         Atm atm = new Atm();
 
         Client client1 = new Client(firstName, lastName, cardNo, pin, expireDate);

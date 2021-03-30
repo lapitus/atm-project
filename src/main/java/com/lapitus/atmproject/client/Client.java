@@ -2,6 +2,7 @@ package com.lapitus.atmproject.client;
 
 import com.lapitus.atmproject.finance.Balance;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import com.lapitus.atmproject.interfaces.FinApi;
@@ -14,11 +15,11 @@ public class Client {
     private String lastName;
     private String cardNo;
     private int cardPin;
-    private Date cardExpireDate;
+    private LocalDate cardExpireDate;
     private Balance balance;
 
 
-    public Client(String firstName, String lastName, String cardNo, int cardPin, Date expireDate) {
+    public Client(String firstName, String lastName, String cardNo, int cardPin, LocalDate expireDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.cardNo = cardNo;

@@ -1,12 +1,12 @@
 package Exceptions;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class CardExpiredException extends Exception {
-    private Date cardExpireDate;
+    private LocalDate cardExpireDate;
     private String cardNo;
 
-    public CardExpiredException(Date cardExpireDate,String cardNo) {
+    public CardExpiredException(LocalDate cardExpireDate,String cardNo) {
         this.cardExpireDate = cardExpireDate;
         this.cardNo = cardNo;
     }

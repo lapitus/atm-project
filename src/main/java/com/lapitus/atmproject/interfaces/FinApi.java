@@ -2,8 +2,8 @@ package com.lapitus.atmproject.interfaces;
 
 import com.lapitus.atmproject.finance.Balance;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public interface FinApi {
-    Balance getBalance(String cardNo, Date cardExpireDate, int cardPin);
+    Balance getBalance(String cardNo, LocalDate cardExpireDate, int cardPin);
 }

@@ -8,11 +8,11 @@ import com.lapitus.atmproject.finance.Balance;
 import com.lapitus.atmproject.interfaces.FinApi;
 import com.lapitus.atmproject.request.RequestBalance;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Atm implements FinApi {
 
-    public Balance getBalance(String cardNo, Date cardExpireDate, int cardPin) {
+    public Balance getBalance(String cardNo, LocalDate cardExpireDate, int cardPin) {
 
 
         Balance balance;
@@ -32,8 +32,8 @@ public class Atm implements FinApi {
         return balance;
     }
 
-    private void validateParams(String cardNo, int cardPin, Date cardExpireDate) throws BadCardNoException, BadPinException, CardExpiredException {
-        Date currentDate = new Date();
+    private void validateParams(String cardNo, int cardPin, LocalDate cardExpireDate) throws BadCardNoException, BadPinException, CardExpiredException {
+        LocalDate currentDate = LocalDate.now();
 
         if (!cardNo.matches("^[0-9]{16}$")) {
             throw new BadCardNoException(cardNo);
@@ -43,7 +43,7 @@ public class Atm implements FinApi {
             throw new BadPinException(cardPin);
         }
 
-        if (cardExpireDate.before(currentDate)) {
+        if (cardExpireDate.isAfter(currentDate)) {
             throw new CardExpiredException(cardExpireDate, cardNo);
         }
     }
