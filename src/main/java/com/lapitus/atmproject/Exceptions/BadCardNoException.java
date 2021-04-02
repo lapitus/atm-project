@@ -1,4 +1,4 @@
-package Exceptions;
+package com.lapitus.atmproject.Exceptions;
 
 public class BadCardNoException extends Exception {
     private String cardNo;
@@ -10,5 +10,10 @@ public class BadCardNoException extends Exception {
     @Override
     public String toString() {
         return ("This card number " + cardNo + " not matching with template ^[0-9]{16}$");
+    }
+
+    @Override
+    public String getMessage() {
+        return toString();
     }
 }

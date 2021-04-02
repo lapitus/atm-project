@@ -1,15 +1,17 @@
 package com.lapitus.atmproject.devices;
 
-import Exceptions.BadCardNoException;
-import Exceptions.BadPinException;
-import Exceptions.BadRequestException;
-import Exceptions.CardExpiredException;
+import com.lapitus.atmproject.Exceptions.BadCardNoException;
+import com.lapitus.atmproject.Exceptions.BadPinException;
+import com.lapitus.atmproject.Exceptions.BadRequestException;
+import com.lapitus.atmproject.Exceptions.CardExpiredException;
 import com.lapitus.atmproject.finance.Balance;
 import com.lapitus.atmproject.interfaces.FinApi;
 import com.lapitus.atmproject.request.RequestBalance;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDate;
 
+@Slf4j
 public class Atm implements FinApi {
 
     public Balance getBalance(String cardNo, LocalDate cardExpireDate, int cardPin) {
@@ -21,6 +23,7 @@ public class Atm implements FinApi {
             validateParams(cardNo, cardPin, cardExpireDate);
         } catch (BadCardNoException | BadPinException | CardExpiredException e) {
             e.printStackTrace();
+            log.error(e.getMessage());
             throw new RuntimeException();
         }
 
@@ -43,7 +46,7 @@ public class Atm implements FinApi {
             throw new BadPinException(cardPin);
         }
 
-        if (cardExpireDate.isAfter(currentDate)) {
+        if (cardExpireDate.isBefore(currentDate)) {
             throw new CardExpiredException(cardExpireDate, cardNo);
         }
     }
@@ -54,6 +57,7 @@ public class Atm implements FinApi {
             return host.getBalanceRequest(req);
         } catch (BadRequestException e) {
             e.printStackTrace();
+            log.error(e.getMessage());
             throw new RuntimeException();
         }
     }

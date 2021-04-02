@@ -3,7 +3,6 @@ package com.lapitus.atmproject.client;
 import com.lapitus.atmproject.finance.Balance;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import com.lapitus.atmproject.interfaces.FinApi;
 import lombok.Getter;

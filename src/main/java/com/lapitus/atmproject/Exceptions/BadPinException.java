@@ -1,4 +1,4 @@
-package Exceptions;
+package com.lapitus.atmproject.Exceptions;
 
 public class BadPinException extends Exception {
     private int pin;
@@ -9,6 +9,11 @@ public class BadPinException extends Exception {
 
     @Override
     public String toString() {
-        return ("Bad pin " + pin + ". Result:" + pin % 2 );
+        return ("Bad pin " + pin + ". Result:" + pin % 2);
+    }
+
+    @Override
+    public String getMessage() {
+        return toString();
     }
 }
